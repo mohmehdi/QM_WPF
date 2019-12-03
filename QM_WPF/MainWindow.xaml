@@ -1,0 +1,152 @@
+﻿<Window x:Class="QM_WPF.MainWindow"
+TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QM_WPF"
+        mc:Ignorable="d"
+        Title="MainWindow"  Height="310" Width="400" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"  KeyDown="Window_KeyDown" Background="#FF383838">
+    <!--main grid-->
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF272734"/>
+                <GradientStop Color="#FF272734" Offset="1"/>
+                <GradientStop Color="#FF191923" Offset="0.522"/>
+                <GradientStop Color="#FF1F1F27" Offset="0.534"/>
+                <GradientStop Color="#FF1F1F27" Offset="0.365"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29 "/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--first Row-->
+        <StackPanel  Grid.Row="0" x:Name="top_properties" MouseLeftButtonDown="Top_properties_MouseLeftButtonDown">
+
+            <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth5"   Background="#FF1B1B1B" BorderBrush="White" Foreground="#DDFFFFFF">
+
+                <Border Padding="2" Background="#FF181B23">
+                    <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
+                        <Button x:Name="reset" Width="45" Height="25" Padding="0" Background="#FF13336C" BorderBrush="#FF18264B" Foreground="#DDFFFFFF" Click="Reset_Click" >
+                            <materialDesign:PackIcon Kind="Reload"/>
+                        </Button>
+                        <Button x:Name="exit" Width="25" Height="25" Padding="0" Background="#FF13336C" BorderBrush="#FF18264B" Foreground="#DDFFFFFF" Click="Exit_Click" >
+                            <materialDesign:PackIcon Kind="WindowClose"/>
+                        </Button>
+                    </StackPanel>
+
+                </Border>
+            </materialDesign:ColorZone>
+        </StackPanel>
+        <!--second Row-->
+        <StackPanel Grid.Row="1">
+            <!--inputs outputs -->
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--inputs-->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--bit system input-->
+                    <StackPanel Grid.Column="0">
+                        <Label HorizontalAlignment="Center" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic" IsEnabled="False" >bit System</Label>
+                        <TextBox x:Name="bit" Margin="15 0 " Height="50" KeyDown="Bit_KeyDown" TextAlignment="Center" CaretBrush="#FF1C6295" Foreground="#DDFFFFFF" FontFamily="Century Gothic"/>
+                    </StackPanel>
+                    <GridSplitter Grid.Column="0" MinWidth="1" Foreground="#00000000">
+                        <GridSplitter.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0.542"/>
+                                <GradientStop Offset="1"/>
+                                <GradientStop Color="#00A8A8A8"/>
+                                <GradientStop Color="White" Offset="0.438"/>
+                            </LinearGradientBrush>
+                        </GridSplitter.Background>
+                    </GridSplitter>
+                    <!--minterms input-->
+                    <StackPanel Grid.Column="1">
+                        <Label HorizontalAlignment="Center" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic" IsEnabled="False" >Minterms</Label>
+                        <TextBox x:Name="minterms" Margin="15 0 " Height="50" TextAlignment="Center" CaretBrush="#FF1C6295" KeyDown="Add_KeyDown" Foreground="#DDFFFFFF" FontFamily="Century Gothic"/>
+                    </StackPanel>
+                    <GridSplitter Grid.Column="1" MinWidth="1" Foreground="#00000000">
+                        <GridSplitter.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                <GradientStop Color="White" Offset="0.542"/>
+                                <GradientStop Offset="1"/>
+                                <GradientStop Color="#00A8A8A8"/>
+                                <GradientStop Color="White" Offset="0.438"/>
+                            </LinearGradientBrush>
+                        </GridSplitter.Background>
+                    </GridSplitter>
+                    <!--buttons-->
+                    <StackPanel Grid.Column="2">
+                        <Border Padding="10">
+                            <StackPanel>
+
+                                <Button x:Name="add"   Width="80" Height="50"  Background="#FF13336C" BorderBrush="#FF172450" Foreground="#DDFFFFFF" Click="Add_Click" KeyDown="Add_KeyDown">
+                                    <materialDesign:PackIcon Kind="PlaylistAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Height="44" Width="66" AutomationProperties.HelpText="to add minterms to the list" />
+                                </Button>
+                                <Button  x:Name="finish" Margin="0 10 0 0"    Width="80" Height="50"  Background="#FF13336C" BorderBrush="#FF102364" Foreground="#DDFFFFFF" Click="Finish_Click">
+                                    <materialDesign:PackIcon Kind="Stop" HorizontalAlignment="Center" VerticalAlignment="Center" Height="44" Width="66" />
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical"  >
+                            <Label HorizontalAlignment="Left" Margin="20 0 0 0" Background="{x:Null}" Foreground="#DDFFFFFF" FontFamily="Century Gothic" FontWeight="Bold" IsEnabled="False" RenderTransformOrigin="0.5,0.5" FontStyle="Italic" >
+                                Output
+                            </Label>
+                            <TextBox x:Name="output1"  Padding="5 0 0 0"  Width="250" Height="96" HorizontalAlignment="Left" Margin="20 0 0 0" Foreground="#FFBBBBBB"  FontWeight="Bold" FontFamily="Century Gothic" FontSize="14" CaretBrush="#FF1C6295"   TextWrapping="Wrap"
+                                AcceptsReturn="True"
+                                 VerticalScrollBarVisibility="Visible" BorderBrush="#89000000" SelectionBrush="White">
+                                <TextBox.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                                        <GradientStop Color="#00000000"/>
+                                        <GradientStop Color="#4C000000" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </TextBox.Background>
+
+                                
+                            </TextBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <Border Padding="10">
+                                <StackPanel>
+
+                                    <Button x:Name="Table"  Margin="0 10 0 0"    Width="80" Height="50"  Background="#FF13336C" BorderBrush="#FF102364" Foreground="#DDFFFFFF" FontSize="18"  FontFamily="Bodoni MT" Click="Table_Click" >
+                                        Table
+                                    </Button>
+                                    <Button  x:Name="pis" Margin="0 10 0 0"    Width="80" Height="50"  Background="#FF13336C" BorderBrush="#FF102364" Foreground="#DDFFFFFF" FontSize="24"  FontFamily="Bodoni MT"  Click="Pis_Click">
+                                        PIs
+                                    </Button>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>     
+       
