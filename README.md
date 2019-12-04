@@ -1,4 +1,8 @@
-*use it to test your projects*\
-a not optimized Quine–McCluskey with less than 27 bits system version\
-just a university project :)
+**just use it to test (your) projects**\
+:innocent:	
+<br>a not optimized Quine–McCluskey with less than 27 bits system version\
 
+
+![capture](QM_WPF/Capture.PNG)
+
+***a university project with C# , XAML***:man_technologist:	
